@@ -2,7 +2,7 @@
 using System.Globalization;
 
 namespace Nesur.Core.Util {
-    public class NumberUtils {
+    public class NumberUtil {
         private static readonly string[] Suffixes = { "", "k", "M", "B", "T", "Qa", "Qi" };
 
         private static string FormatShort(double value, int decimals = 1) {
