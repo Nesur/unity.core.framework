@@ -5,7 +5,7 @@ namespace Nesur.Core.Util {
     public class NumberUtil {
         private static readonly string[] Suffixes = { "", "k", "M", "B", "T", "Qa", "Qi" };
 
-        private static string FormatShort(double value, int decimals = 1) {
+        public static string FormatShort(double value, int decimals = 1) {
             if (double.IsNaN(value) || double.IsInfinity(value)) return "0";
 
             double absValue = Math.Abs(value);
