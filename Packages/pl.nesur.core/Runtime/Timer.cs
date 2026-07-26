@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace Nesur.Core {
     public class Timer {
-        public EventHandler<float> OnTimerUpdated;
         public EventHandler OnTimerFinished;
         public EventHandler OnTimerElapsed;
         private readonly float _duration;
@@ -43,9 +42,8 @@ namespace Nesur.Core {
 
             _currentTime += Time.deltaTime;
             if (_currentTime >= _duration) {
-                _currentTime = 0;
                 OnTimerElapsed?.Invoke(this, EventArgs.Empty);
-
+                _currentTime = 0;
                 if (_iterationCount != 0) {
                     _currentIteration++;
                     if (_currentIteration >= _iterationCount) {
@@ -54,8 +52,6 @@ namespace Nesur.Core {
                     }
                 }
             }
-
-            OnTimerUpdated?.Invoke(this, GetElapsedTimePercentage());
         }
 
         public void IncreaseTime(float timeInSeconds) {
