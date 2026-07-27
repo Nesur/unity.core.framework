@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -35,6 +36,7 @@ namespace Nesur.Core.Util {
             };
             List<RaycastResult> uiRaycastResults = new();
             EventSystem.current.RaycastAll(pointerEventData, uiRaycastResults);
+            uiRaycastResults = uiRaycastResults.Where(r => r.module.GetType().Name != "WorldDocumentRaycaster").ToList();
             return uiRaycastResults.Count > 0;
         }
         
